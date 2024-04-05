@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django import views
+from django.views.generic import RedirectView
 
 urlpatterns = [
+    #path('', views.index, name='index'),
+    path('', RedirectView.as_view(url='/weervet/', permanent=True)),
     path('admin/', admin.site.urls),
 ]
