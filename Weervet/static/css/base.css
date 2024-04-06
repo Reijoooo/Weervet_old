@@ -1,0 +1,78 @@
+.header-container {
+    margin: auto;
+    border: 2px solid darkorange; /* Граница контейнера */
+    background-color: mediumseagreen;
+    border-radius: 20px;
+    padding: 30px; /* Отступы внутри контейнера */
+}
+
+.body-container {
+    width: 60%;
+    margin: auto;
+    border: 1px solid darkorange;
+    border-radius: 20px;
+}
+
+.footer-container {
+    margin: auto;
+    border: 2px solid darkorange; /* Граница контейнера */
+    background-color: mediumseagreen;
+    border-radius: 20px;
+    padding: 30px; /* Отступы внутри контейнера */
+}
+
+#logo {
+    background-image: url("weervet2.png");
+    margin-top: -30px;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.contact {
+    margin-left: 150px;
+    text-decoration: none;
+    font-size:30px;
+    font-family: Impact, Charcoal, sans-serif;
+    width:148px;
+    height:50px;
+    border-width:1px;
+    color:#fff;
+    border-color:#18ab29;
+    border-top-left-radius:40px;
+    border-top-right-radius:40px;
+    border-bottom-left-radius:40px;
+    border-bottom-right-radius:40px;
+    background: darkorange;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.contact:hover {
+    background: orange;
+}
+
+.about {
+    margin-left: 20px;
+    text-decoration: none;
+    font-size:30px;
+    font-family: Impact, Charcoal, sans-serif;
+    width:150px;
+    height:50px;
+    border-width:1px;
+    color:#fff;
+    border-color:#18ab29;
+    border-top-left-radius:40px;
+    border-top-right-radius:40px;
+    border-bottom-left-radius:40px;
+    border-bottom-right-radius:40px;
+    background: darkorange;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.about:hover {
+    background: orange;
+}

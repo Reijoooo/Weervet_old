@@ -15,12 +15,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django import views
+from django.urls import path, include
+
+import home_page_app
+from home_page_app.views import index
+from users_app.views import signup
+# from contact_app.views import contact
+# from about_app.views import about
+from . import templates
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    #path('', views.index, name='index'),
-    path('', RedirectView.as_view(url='/weervet/', permanent=True)),
     path('admin/', admin.site.urls),
+    path('', index, name='index'),
+    path('signup/', signup, name='signup'),
+    # path('', include('weervet.urls')),  # Добавьте маршрут к вашим URL-адресам
+    #path('', views.index, name='index'),
+    # path('/index.html', RedirectView.as_view(url='/weervet/', permanent=True)),
 ]

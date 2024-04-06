@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import sqlite3
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,6 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home_page_app',
+    'users_app',
+    'contact_app',
+    'about_app',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +59,12 @@ ROOT_URLCONF = 'Weervet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            "Weervet/templates/base",
+            "Weervet/templates",
+            os.path.join(BASE_DIR, 'Weervet/templates/base'),
+            os.path.join(BASE_DIR, 'Weervet/templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +77,16 @@ TEMPLATES = [
     },
 ]
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'Weervet/static/react_components'),
+    os.path.join(BASE_DIR, 'Weervet/static/'),
+    os.path.join(BASE_DIR, 'Weervet/static/css'),
+    os.path.join(BASE_DIR, 'Weervet/static/js'),
+    os.path.join(BASE_DIR, 'Weervet/static/js/components'),
+    os.path.join(BASE_DIR, 'Weervet/static/js/pages'),
+
+]
+
 WSGI_APPLICATION = 'Weervet.wsgi.application'
 
 
@@ -74,13 +94,23 @@ WSGI_APPLICATION = 'Weervet.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'weervet',
+#         'USER': 'postgres',
+#         'PASSWORD': '2001',
+#         'HOST': 'localhost',   # Если база данных находится на локальном компьютере
+#         'PORT': '5432',        # Порт PostgreSQL (обычно 5432)
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

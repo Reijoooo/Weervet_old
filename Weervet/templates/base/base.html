@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+    <script src="{% static 'js/app.js' %}"></script>
+    <title>{% block title %}Weervet{% endblock %}</title>
+    <!-- Вставьте вашу общую стилизацию, скрипты и т.д. -->
+</head>
+<body class="body-container">
+    <header>
+        {% include 'base_header.html' %}
+        <!-- Заголовок сайта, навигационное меню и т.д. -->
+    </header>
+    <main>
+        {% block content %}
+            <h3>h3</h3>
+        {% endblock %}
+    </main>
+    <footer>
+        <h2>Footer</h2>
+        {% include 'base_footer.html' %}
+        <!-- Футер сайта -->
+    </footer>
+</body>
+</html>
