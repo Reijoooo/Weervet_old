@@ -24,6 +24,8 @@ from about_app.views import about
 from contact_app.views import contact
 from . import templates
 from django.views.generic import RedirectView
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,6 +33,7 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', user_login, name='login'),
     path('logout/', user_logout, name='logout'),
+    # path('logout/', LogoutView.as_view(next_page=''), name='logout'),
     path('id/<int:user_id>/', my_account, name='user_profile'),
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),

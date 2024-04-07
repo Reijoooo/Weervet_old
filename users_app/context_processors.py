@@ -1,2 +1,7 @@
+from django.shortcuts import render
+
 def user_id(request):
-    return {'user_id': request.user.id if request.user.is_authenticated else None}
+    user_id = None
+    if request.user.is_authenticated:
+        user_id = request.user.id
+    return {'user_id': user_id}

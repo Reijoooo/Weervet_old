@@ -7,9 +7,11 @@
     <title>Личный кабинет</title>
 </head>
 <body>
-    <h1>ЛК твоё</h1>
-    <p>Username: {{ user.username }}</p>
-    <p>Username: {{ user.user_id }}</p>
-    <!-- Добавьте другие поля профиля, которые вы хотите отобразить -->
+    {% block content %}
+        <h1>ЛК твоё</h1>
+        <p>Username: {{ user.username }}</p>
+        <p>Username: {{ user.id }}</p>
+        <!-- Добавьте другие поля профиля, которые вы хотите отобразить -->
+    {% endblock %}
 </body>
 </html>

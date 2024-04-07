@@ -2,33 +2,27 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from users_app.forms import UserRegistrationForm, UserLoginForm
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.urls import reverse
 
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect(request, '/id/<int:user_id>/')
+            return redirect(reverse('user_profile', kwargs={'user_id': user.id}))
     else:
         form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
 
 
-def set_session_expiry(request):
-    if request.POST.get('remember_me'):
-        # Устанавливаем срок действия куки на неделю (7 дней)
-        request.session.set_expiry(604800)
-
-
 def user_login(request):
     if request.method == 'POST':
-        form = UserLoginForm(request.POST)
+        form = UserLoginForm(data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
@@ -36,12 +30,9 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                request.session['user_id'] = user.id # Сохраняем ID пользователя в сессии
-                user_id = request.auth_user.id if request.user.is_authenticated else None
-                render(request, '../context_processors.py', {'user_id': user_id})
                 if remember:
-                    request.session.set_expiry(set_session_expiry)  # Неделя (в секундах)
-                # Redirect to a success page.
+                    request.session.set_expiry(604800)  # Неделя (в секундах)
+                return redirect('/')
             else:
                 messages.error(request, 'Неверный логин или пароль.')
     else:
@@ -50,16 +41,14 @@ def user_login(request):
 
 
 def user_logout(request):
-    logout(request)
-    return redirect('')
+    if request.method == 'GET':  # Обрабатываем только GET-запросы для выхода пользователя
+        # Выполнить выход из системы
+        logout(request)
+        # Перенаправить пользователя на главную страницу
+        return redirect('/')  # Замените 'home' на имя вашего URL-шаблона главной страницы
 
 
 def my_account(request, user_id):
     # Получите пользователя по его идентификатору
     user = get_object_or_404(User, id=user_id)
-    return render(request, 'registration/id.html', {'user': user})
-
-
-# @login_required
-# def my_account(request):
-#     return render(request, 'registration/id.html')
+    return render(request, 'registration/id.html', {'User': User})

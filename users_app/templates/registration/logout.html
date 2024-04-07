@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+<link rel="stylesheet" type="text/css" href="../css/signup.css">
+{% block content %}
+    {% if user.is_authenticated %}
+        <p>Вы вошли в систему как: {{ user.username }}</p>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Выйти</button>
+        </form>
+        {% else %}
+            <p>Вы не вошли в систему.</p>
+    {% endif %}
+{% endblock %}

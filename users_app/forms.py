@@ -1,7 +1,6 @@
 from django import forms
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser, Group, Permission
-
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
@@ -41,6 +40,7 @@ class UserRegistrationForm(UserCreationForm):
 
 class UserLoginForm(AuthenticationForm):
     remember = forms.BooleanField(label='Запомнить меня', required=False)
+
     class Meta:
         model = User
         fields = ('username', 'password')

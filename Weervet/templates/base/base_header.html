@@ -6,13 +6,14 @@
         <a href="/contact/" class="contact">Контакты</a>
         <a href="/about/" class="about">О нас</a>
 
-        {% if not user.is_authenticated %}
-        <a href="/register/" class="register">Зарегистрироваться</a>
-        <a href="/login/" class="login">Войти</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'user_profile' user_id %}" class="id">Личный кабинет</a>
+            <a href="{% url 'logout' %}" class="id">Выйти</a>
+{#            <a href="{% url 'logout/' %}" class="id">Выйти</a>#}
+        {% else %}
+            <a href="/register/" class="register">Зарегистрироваться</a>
+            <a href="/login/" class="login">Войти</a>
         {% endif %}
 
-        {% if user.is_authenticated %}
-        <a href="{% url 'user_profile' user_id %}" class="id">Личный кабинет</a>
-        {% endif %}
     </nav>
 </header>
