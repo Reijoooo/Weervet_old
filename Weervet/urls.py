@@ -22,8 +22,6 @@ from home_page_app.views import index
 from users_app.views import register, user_logout, user_login, my_account
 from about_app.views import about
 from contact_app.views import contact
-# from contact_app.views import contact
-# from about_app.views import about
 from . import templates
 from django.views.generic import RedirectView
 
