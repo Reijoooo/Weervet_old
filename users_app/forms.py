@@ -40,6 +40,7 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class UserLoginForm(AuthenticationForm):
+    remember = forms.BooleanField(label='Запомнить меня', required=False)
     class Meta:
         model = User
         fields = ('username', 'password')

@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-y6v5oprrod+&w*q%7uy%d1z#l%99zi4$p*i3z1@cssm9!jj8rr
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Application definition
 
@@ -61,14 +61,16 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            "Weervet/templates/base",
-            "Weervet/templates",
             os.path.join(BASE_DIR, 'Weervet/templates/base'),
             os.path.join(BASE_DIR, 'Weervet/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+
+                'django.template.context_processors.request',
+                'users_app.context_processors.user_id',
+
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

@@ -12,7 +12,7 @@
         {% endif %}
 
         {% if user.is_authenticated %}
-        <a href="id/<int:user_id>/" class="id">Личный кабинет</a>
+        <a href="{% url 'user_profile' user_id %}" class="id">Личный кабинет</a>
         {% endif %}
     </nav>
 </header>

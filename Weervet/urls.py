@@ -31,7 +31,7 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', user_login, name='login'),
     path('logout/', user_logout, name='logout'),
-    path('id/<int:user_id>/', my_account, name='id'),
+    path('id/<int:user_id>/', my_account, name='user_profile'),
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
     # path('', include('weervet.urls')),  # Добавьте маршрут к вашим URL-адресам
