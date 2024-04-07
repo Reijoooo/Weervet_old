@@ -1,30 +1,51 @@
-from .forms import SignUpForm
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from users_app.forms import UserRegistrationForm, UserLoginForm
+from django.contrib.auth.decorators import login_required
 
-def signup(request):
+
+def register(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('home')  # Redirect to home page after successful registration
+            return redirect('/id/<int:user_id>/')
     else:
-        form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form})
+        form = UserRegistrationForm()
+    return render(request, 'registration/register.html', {'form': form})
 
-def login_view(request):
+
+def user_login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            # Перенаправление на страницу успеха или другую страницу после входа.
-            return redirect('success_page_url_name')
-        else:
-            # Возвращение сообщения об ошибке при неверном входе.
-            error_message = "Invalid username or password."
-            return render(request, 'login.html', {'error_message': error_message})
-    # Если метод запроса не POST или аутентификация не удалась, возвращаем страницу входа.
-    return render(request, 'login.html')
+        form = UserLoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('base.html', {'user': user})
+    else:
+        form = UserLoginForm()
+    return render(request, 'registration/login.html', {'form': form})
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('')
+
+
+def my_account(request, user_id):
+    # Получите пользователя по его идентификатору
+    user = get_object_or_404(User, id=user_id)
+    return render(request, 'registration/id.html', {'user': user})
+
+
+# @login_required
+# def my_account(request):
+#     return render(request, 'registration/id.html')

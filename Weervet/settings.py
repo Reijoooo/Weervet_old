@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'home_page_app',
     'users_app',
     'contact_app',
@@ -94,23 +95,23 @@ WSGI_APPLICATION = 'Weervet.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'weervet',
-#         'USER': 'postgres',
-#         'PASSWORD': '2001',
-#         'HOST': 'localhost',   # Если база данных находится на локальном компьютере
-#         'PORT': '5432',        # Порт PostgreSQL (обычно 5432)
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'weervet',
+        'USER': 'postgres',
+        'PASSWORD': '2001',
+        'HOST': 'localhost',   # Если база данных находится на локальном компьютере
+        'PORT': '5432',        # Порт PostgreSQL (обычно 5432)
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -152,3 +153,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = ''
+LOGOUT_REDIRECT_URL = 'login/'

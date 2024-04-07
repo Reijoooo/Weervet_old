@@ -19,7 +19,9 @@ from django.urls import path, include
 
 import home_page_app
 from home_page_app.views import index
-from users_app.views import signup
+from users_app.views import register, user_logout, user_login, my_account
+from about_app.views import about
+from contact_app.views import contact
 # from contact_app.views import contact
 # from about_app.views import about
 from . import templates
@@ -28,8 +30,13 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('signup/', signup, name='signup'),
+    path('register/', register, name='register'),
+    path('login/', user_login, name='login'),
+    path('logout/', user_logout, name='logout'),
+    path('id/<int:user_id>/', my_account, name='id'),
+    path('about/', about, name='about'),
+    path('contact/', contact, name='contact'),
     # path('', include('weervet.urls')),  # Добавьте маршрут к вашим URL-адресам
     #path('', views.index, name='index'),
-    # path('/index.html', RedirectView.as_view(url='/weervet/', permanent=True)),
+    # path('/about.html', RedirectView.as_view(url='/weervet/', permanent=True)),
 ]
