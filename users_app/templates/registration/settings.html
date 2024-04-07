@@ -8,10 +8,7 @@
 </head>
 <body>
     {% block content %}
-        <h1>ЛК твоё</h1>
-        <p>Username: {{ user.username }}</p>
-        <p>Username: {{ user.id }}</p>
-        <a href="{% url 'user_settings' user_id%}" class="id">Настройки</a>
+        <h1>Настройки</h1>
         <!-- Добавьте другие поля профиля, которые вы хотите отобразить -->
     {% endblock %}
 </body>

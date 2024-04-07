@@ -19,7 +19,7 @@ from django.urls import path, include
 
 import home_page_app
 from home_page_app.views import index
-from users_app.views import register, user_logout, user_login, my_account
+from users_app.views import register, user_logout, user_login, my_account, user_settings
 from about_app.views import about
 from contact_app.views import contact
 from . import templates
@@ -33,11 +33,8 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', user_login, name='login'),
     path('logout/', user_logout, name='logout'),
-    # path('logout/', LogoutView.as_view(next_page=''), name='logout'),
     path('id/<int:user_id>/', my_account, name='user_profile'),
+    path('id/<int:user_id>/settings/', user_settings, name='user_settings'),
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
-    # path('', include('weervet.urls')),  # Добавьте маршрут к вашим URL-адресам
-    #path('', views.index, name='index'),
-    # path('/about.html', RedirectView.as_view(url='/weervet/', permanent=True)),
 ]

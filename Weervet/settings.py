@@ -63,6 +63,8 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'Weervet/templates/base'),
             os.path.join(BASE_DIR, 'Weervet/templates'),
+            os.path.join(BASE_DIR, 'users_app/templates'),
+            os.path.join(BASE_DIR, 'users_app/templates/css'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -150,6 +152,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

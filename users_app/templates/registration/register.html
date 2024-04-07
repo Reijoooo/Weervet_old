@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
-<link rel="stylesheet" type="text/css" href="../css/signup.css">
+{% load static %}
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Зарегистрироваться</button>
-</form>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Зарегистрироваться</button>
+    </form>
 {% endblock %}

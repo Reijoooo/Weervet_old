@@ -52,3 +52,9 @@ def my_account(request, user_id):
     # Получите пользователя по его идентификатору
     user = get_object_or_404(User, id=user_id)
     return render(request, 'registration/id.html', {'User': User})
+
+
+def user_settings(request, user_id):
+    # Получите пользователя по его идентификатору
+    user = get_object_or_404(User, id=user_id)
+    return render(request, 'registration/settings.html', {'User': User})
