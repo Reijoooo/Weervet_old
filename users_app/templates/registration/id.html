@@ -1,21 +1,14 @@
-<!DOCTYPE html>
 {% extends 'base.html' %}
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Личный кабинет</title>
-</head>
-<body>
-    {% block content %}
+{% load static %}
+{% block content %}
+    <div class="content">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/id.css' %}">
         <h1>ЛК твоё</h1>
         {% if avatar_url %}
-            <img src="{{ avatar_url }}" style="width: 200px; height: 200px; border-radius: 50%;">
+            <img src="{{ avatar_url }}" alt="avatar" class="avatar">
         {% endif  %}
         <p>Username: {{ user.username }}</p>
         <p>Username: {{ user.id }}</p>
         <a href="{% url 'user_settings' user_id%}" class="id">Настройки</a>
-        <!-- Добавьте другие поля профиля, которые вы хотите отобразить -->
-    {% endblock %}
-</body>
-</html>
+    </div>
+{% endblock %}
