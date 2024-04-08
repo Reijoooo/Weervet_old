@@ -1,0 +1,33 @@
+/* Стили для кнопок */
+button {
+    background-color: #4CAF50; /* Цвет фона */
+    color: white; /* Цвет текста */
+    padding: 10px 20px; /* Отступы вокруг текста */
+    border: none; /* Убираем границу */
+    border-radius: 5px; /* Закругляем углы */
+    cursor: pointer; /* Изменяем курсор при наведении */
+    transition: background-color 0.3s ease; /* Плавное изменение цвета фона */
+}
+
+button:hover {
+    background-color: #45a049; /* Цвет фона при наведении */
+}
+
+/* Стили для изображений */
+img {
+    border-radius: 50%; /* Закругляем углы изображения */
+    margin-bottom: 20px; /* Отступ снизу изображения */
+}
+
+/* Стили для форм */
+form {
+    margin-bottom: 20px; /* Отступ снизу формы */
+}
+
+/* Общие стили для страницы */
+body {
+    font-family: Arial, sans-serif; /* Шрифт */
+    margin: 0; /* Убираем отступы по умолчанию */
+    padding: 20px; /* Отступы вокруг содержимого */
+    background-color: #f2f2f2; /* Цвет фона */
+}

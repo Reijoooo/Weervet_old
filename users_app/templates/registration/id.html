@@ -9,6 +9,9 @@
 <body>
     {% block content %}
         <h1>ЛК твоё</h1>
+        {% if avatar_url %}
+            <img src="{{ avatar_url }}" style="width: 200px; height: 200px; border-radius: 50%;">
+        {% endif  %}
         <p>Username: {{ user.username }}</p>
         <p>Username: {{ user.id }}</p>
         <a href="{% url 'user_settings' user_id%}" class="id">Настройки</a>

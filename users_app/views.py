@@ -59,70 +59,48 @@ def user_logout(request):
 
 
 def my_account(request, user_id):
-    # Получите пользователя по его идентификатору
     user = get_object_or_404(User, id=user_id)
-    return render(request, 'registration/id.html', {'User': User})
+    try:
+        profile = Profile.objects.get(user=user)
+        avatar_url = profile.avatar.url if profile.avatar else '/media/avatar/default.jpg'
+    except Profile.DoesNotExist:
+        profile = None
+        avatar_url = '/media/avatar/default.jpg'  # Убедимся, что переменная всегда определена
+
+    return render(request, 'registration/id.html', {'user': user, 'avatar_url': avatar_url})
 
 
 def user_settings(request, user_id):
-    # Получите пользователя по его идентификатору
     user = get_object_or_404(User, id=user_id)
 
+    try:
+        profile = Profile.objects.get(user=user)
+        previous_avatar_path = profile.avatar.path if profile.avatar else None
+    except Profile.DoesNotExist:
+        profile = None
+        previous_avatar_path = None
+
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
-            try:
-                # Пытаемся получить профиль пользователя
-                profile = Profile.objects.get(user=request.user)
-                # Если профиль найден, обновляем его данные
-                previous_avatar_path = profile.avatar.path
-                os.remove(previous_avatar_path)
-                profile.avatar = form.cleaned_data['avatar']
-                profile.save()
-            except Profile.DoesNotExist:
-                # Если профиль не найден, создаем новый профиль
-                profile = form.save(commit=False)
-                profile.user = request.user
-                profile.save()
+            new_avatar_path = profile.avatar.path if profile.avatar else None
+            if 'delete_avatar' in request.POST:
+                # Если пользователь выбрал удалить аватар, удаляем его
+                profile.delete_avatar()
+
+            else:
+                # Если пользователь загрузил новый аватар, сохраняем его
+                form.save()
+
+            # Проверяем, был ли загружен новый аватар, и удалён ли предыдущий
+                if new_avatar_path and previous_avatar_path and new_avatar_path != previous_avatar_path:
+                    # Проверяем, существует ли файл по указанному пути
+                    if os.path.exists(previous_avatar_path):
+                        # Удаляем предыдущий аватар из файловой системы
+                        os.remove(previous_avatar_path)
+        return redirect('user_settings', user_id=user_id)
     else:
-        form = ProfileForm()
+        form = ProfileForm(instance=profile)
 
     return render(request, 'registration/settings.html', {'user_id': user_id, 'form': form})
 
-
-# def update_profile(request):
-#     if request.method == 'POST':
-#         form = ProfileForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             # Сохраняем данные профиля
-#             profile = form.save(commit=False)
-#             profile.user = request.user
-#             profile.save()
-#             # return redirect('profile_updated')  # Редирект на страницу с подтверждением обновления профиля
-#     else:
-#         form = ProfileForm()
-#     return render(request, 'registration/settings.html', {'form': form})
-
-
-# def upload_avatar(request):
-#     if request.method == 'POST':
-#         avatar = request.FILES['avatar']
-#         # Проверяем, что загруженный файл является изображением
-#         if avatar.content_type.startswith('image'):
-#             # Путь для сохранения аватара
-#             avatar = models.ImageField(upload_to=user_avatar_path, null=True, blank=True)
-#             # avatar_path = os.path.join(settings.MEDIA_ROOT, 'avatars', avatar.name)
-#             # Открываем файл на запись в бинарном режиме и записываем данные
-#             with open(avatar_path, 'wb') as f:
-#                 for chunk in avatar.chunks():
-#                     f.write(chunk)
-#             # Далее можно выполнить дополнительные действия с сохраненным файлом,
-#             # например, обновить профиль пользователя с ссылкой на аватар
-#             # Например:
-#             # request.user.profile.avatar = 'avatars/' + avatar.name
-#             request.user.profile.save()
-#             return render(request, 'registration/id.html', {'avatar_url': '/media/avatars/' + avatar.name})
-#         else:
-#             # Если файл не является изображением, выводим сообщение об ошибке
-#             return render(request, 'registration/settings.html')
-#     return render(request, 'registration/settings.html')

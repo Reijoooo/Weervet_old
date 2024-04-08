@@ -77,9 +77,7 @@
     background: orange;
 }
 
-.profile {
-    background-image: ;
-}
+
 
 .register {
     margin-left: 20px;
@@ -151,4 +149,59 @@
 
 .id:hover {
     background: orange;
+}
+
+.dropdown-position {
+    margin-left: 95%;
+    margin-top: -35px;
+}
+
+.dropbtn img {
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* Стили для основной кнопки меню */
+.dropbtn {
+
+    border-radius: 100%;
+
+    color: white;
+    border: none;
+}
+
+/* Стили для контейнера выпадающего меню */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Стили для содержимого выпадающего меню (по умолчанию скрыто) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Стили для ссылок в выпадающем меню */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Стили для ссылок в выпадающем меню */
+.dropdown-content a:hover {
+  background-color: #18ab29;
+}
+
+/* Показываем выпадающее меню, когда наводим курсор на основную кнопку */
+.dropdown:hover .dropdown-content {
+  display: block;
 }
