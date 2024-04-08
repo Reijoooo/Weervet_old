@@ -16,6 +16,11 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Директория, в которой будут храниться медиа-файлы
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# URL, по которому медиа-файлы будут доступны через веб-сервер
+MEDIA_URL = '/media/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/

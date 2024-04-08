@@ -9,7 +9,11 @@
 <body>
     {% block content %}
         <h1>Настройки</h1>
-        <!-- Добавьте другие поля профиля, которые вы хотите отобразить -->
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Сохранить</button>
+            </form>
     {% endblock %}
 </body>
 </html>
