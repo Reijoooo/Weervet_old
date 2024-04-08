@@ -22,6 +22,7 @@ from home_page_app.views import index
 from users_app.views import register, user_logout, user_login, my_account, user_settings
 from about_app.views import about
 from contact_app.views import contact
+from my_pets_app.views import my_pets, add_pets
 from . import templates
 from django.views.generic import RedirectView
 from django.contrib.auth import views as auth_views
@@ -39,6 +40,8 @@ urlpatterns = [
     path('id/<int:user_id>/settings/', user_settings, name='user_settings'),
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
+    path('id/<int:user_id>/my_pets/', my_pets, name='pets'),
+    path('id/<int:user_id>/my_pets/add_pets', add_pets, name='add_pets'),
 ]
 
 if settings.DEBUG:

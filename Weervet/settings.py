@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'users_app',
     'contact_app',
     'about_app',
+    'my_pets_app',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'Weervet/templates'),
             os.path.join(BASE_DIR, 'users_app/templates'),
             os.path.join(BASE_DIR, 'users_app/templates/css'),
+            os.path.join(BASE_DIR, 'my_pets_app/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

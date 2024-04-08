@@ -13,7 +13,7 @@
                     <a href="{% url 'user_profile' user_id %}" class="dropbtn"><img src="{{ avatar_url }}" alt="avatar"></a>
                     <div class="dropdown-content">
                         <a href="{% url 'user_profile' user_id %}">Личный кабинет</a>
-                        <a href="#">Ссылка 2</a>
+                        <a href="{% url 'pets' user_id %}">Мои питомцы</a>
                         <a href="{% url 'logout' %}">Выйти</a>
                     </div>
                 </div>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Мои твари{% endblock %}
+
+{% block content %}
+    <p>Пользователь: {{ user.username }}</p>
+
+    <ul>
+        {% for pet in pets %}
+            <li>{{ pet.avatar }} - {{ pet.name }} - {{ pet.species }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'add_pets' user_id%}" class="content">Добавить питомца</a>
+{% endblock %}
