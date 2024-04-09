@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Мои твари{% endblock %}
+
+{% block content %}
+        <img src="{{  pet.avatar.url }}" alt="avatar" style="width: 200px; height: 200px">
+        <p>Имя: {{ pet.name }}</p>
+        <p>Пол: {{ pet.get_sex_display }}</p>
+        <p>Вид: {{ pet.species }}</p>
+        <p>Порода: {{ pet.breed }}</p>
+        <p>Возраст: {{ pet.age }}</p>
+        <p>Владелец ФИО: {{ pet.owner }}</p>
+        <p>Цвет: {{ pet.color }}</p>
+        <p>Страна: {{ pet.country }}</p>
+        <p>Город: {{ pet.city }}</p>
+        <p>Номер микрочипа: {{ pet.microchip_number }}</p>
+        <p>Дата введения микрочипа: {{ pet.date_microchip }}</p>
+        <p>Расположение микрочипа: {{ pet.location_microchip }}</p>
+        <p>Номер клейма: {{ pet.tattoo_number }}</p>
+        <p>Дата клеймения: {{ pet.date_tattoo }}</p>
+        <p>Особые отметины или приметы: {{ pet.special_marks }}</p>
+        <p>Сведения о репродукции: {{ pet.get_reproduction_display }}</p>
+{% endblock %}

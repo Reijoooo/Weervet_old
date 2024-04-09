@@ -8,14 +8,14 @@ class Pet(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     SEX_CHOICES = [
-        ('M', 'Male'),
-        ('F', 'Female'),
+        ('М', 'Мальчик'),
+        ('Д', 'Девочка'),
     ]
 
     REPRODUCTION_CHOICES = [
-        ('C', 'Castration'),
-        ('S', 'Sterilization'),
-        ('N', 'Nothing')
+        ('К', 'Кастрирован'),
+        ('С', 'Стерилизована'),
+        ('Н', 'Ничего')
     ]
 
     # avatar = models.ImageField(upload_to='avatar/pets', null=True, blank=True)

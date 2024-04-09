@@ -24,7 +24,7 @@ class PetForm(forms.ModelForm):
                   'microchip_number': 'Номер микрочипа',
                   'date_microchip': 'Дата введения микрочипа',
                   'location_microchip': 'Расположение микрочипа',
-                  'tattoo_number': 'Номер клейпа',
+                  'tattoo_number': 'Номер клейма',
                   'date_tattoo': 'Дата клеймения',
                   'special_marks': 'Особые отметины или приметы',
                   'reproduction': 'Сведения о репродукции',

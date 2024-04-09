@@ -7,9 +7,17 @@
 
     <ul>
         {% for pet in pets %}
-            <li>{{ pet.avatar }} - {{ pet.name }} - {{ pet.species }}</li>
+            <li> <img src="{{  pet.avatar.url }}" alt="avatar" style="width: 50px; height: 50px"> - {{ pet.name }} -
+                {{ pet.species }} - <a href="{% url 'pet_info' user_id=user.id pet_id=pet.id %}" class="contact">Информация</a> -
+            <a href="{% url 'pet_edit' user_id=user.id pet_id=pet.id %}" class="contact">Редактировать</a> -
+            <a href="{% url 'pet_delete' user_id=user.id pet_id=pet.id %}" class="contact">Удалить питомца</a>
+            </li>
+
         {% endfor %}
     </ul>
 
-    <a href="{% url 'add_pets' user_id%}" class="content">Добавить питомца</a>
+
+
+
+    <a href="{% url 'add_pets' user_id %}" class="contact">Добавить питомца</a>
 {% endblock %}
