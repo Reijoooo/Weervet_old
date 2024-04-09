@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'contact_app',
     'about_app',
     'my_pets_app',
+    'schedule',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'users_app/templates'),
             os.path.join(BASE_DIR, 'users_app/templates/css'),
             os.path.join(BASE_DIR, 'my_pets_app/templates'),
+            os.path.join(BASE_DIR, 'schedule/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

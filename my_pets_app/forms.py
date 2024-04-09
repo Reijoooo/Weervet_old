@@ -31,7 +31,7 @@ class PetForm(forms.ModelForm):
                   }
 
         widgets = {
-            'birth_date': DateTimeInput(attrs={'type': 'datetime-local'}),
-            'date_microchip': DateTimeInput(attrs={'type': 'datetime-local'}),
-            'date_tatoo': DateTimeInput(attrs={'type': 'datetime-local'}),
+            'birth_date': DateTimeInput(attrs={'type': 'date'}),
+            'date_microchip': DateTimeInput(attrs={'type': 'date'}),
+            'date_tatoo': DateTimeInput(attrs={'type': 'date'}),
         }

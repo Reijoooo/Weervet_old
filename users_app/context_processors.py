@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Profile
 from django.contrib.auth.models import User
 
+
 def user_id(request):
 
     user_id = None

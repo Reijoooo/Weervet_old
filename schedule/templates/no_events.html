@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>No Events Found</h1>
+    <p>You don't have any events yet.</p>
+    <a href="{% url 'create_event' user_id %}">Create New Event</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Event Detail</h1>
+    <p>Title: {{ event.title }}</p>
+    <p>Date: {{ event.date }}</p>
+    <p>Location: {{ event.location }}</p>
+    <!-- Добавьте другие атрибуты события по вашему усмотрению -->
+    <a href="{% url 'edit_event' event.id %}">Edit</a>
+    <a href="{% url 'delete_event' event.id %}">Delete</a>
+{% endblock %}

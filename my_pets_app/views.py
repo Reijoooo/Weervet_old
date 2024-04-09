@@ -54,6 +54,7 @@ def pet_edit(request, user_id, pet_id):
         form = PetForm(instance=pet)  # Создаем форму с существующими данными питомца
     return render(request, 'pet_edit.html', {'form': form, 'user_id': user_id, 'pet_id': pet_id})
 
+
 def pet_delete(request, user_id, pet_id):
     pet = get_object_or_404(Pet, pk=pet_id)
     if request.method == 'POST':
