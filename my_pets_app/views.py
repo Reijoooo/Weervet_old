@@ -9,6 +9,22 @@ from django.utils import timezone
 
 
 def my_pets(request, user_id):
+    # # Проверяем, что пользователь аутентифицирован
+    # if request.user.is_authenticated:
+    #     user = request.user
+    #     # Получаем все питомцы для авторизованного пользователя
+    #     pets = Pet.objects.filter(user=user)
+    #     # Создаем массив со всеми pet_id для авторизованного пользователя
+    #     pet_ids = [pet.id for pet in pets]
+    #     # Добавляем pet_ids в контекст, чтобы он был доступен в шаблоне
+    #     context = {'pet_ids': pet_ids}
+    #     # request('base.html', {'pets': pets})
+    #     return render(request, 'pets.html', {'context': context, 'user': user, 'pets': pets})
+    # else:
+    #     # Дополнительная логика для неаутентифицированных пользователей
+    #     return redirect('register')
+
+
     user = request.user
     pets = Pet.objects.filter(user=user)
 
@@ -39,7 +55,7 @@ def pet_info(request, user_id, pet_id):
     user = get_object_or_404(User, id=user_id)
     pet = get_object_or_404(Pet, id=pet_id)
     pets = Pet.objects.filter(user_id=user_id)
-    return render(request, 'pet_info.html', {'pet': pet, 'user': user})
+    return render(request, 'pet_info.html', {'pet': pet, 'user': user, 'pets': pets})
 
 
 def pet_edit(request, user_id, pet_id):

@@ -3,20 +3,42 @@
     <nav>
         <a id = "logo" href="/"></a>
         <div class="header_buttons">
-            <a href="/contact/" class="button">Статьи</a>  {#Статьи#}
-            <a href="/about/" class="button">Вет паспорт</a> {#Вет паспорт#}
-            <a href="/about/" class="button">Амбулаторная карта</a> {#Амбулаторная карта#}
+            <a href="/article/" class="button">статьи</a>  {#Статьи#}
+{#            <a href="/about/" class="button">вет паспорт</a> {#Вет паспорт#}
+                {% if user.is_authenticated %}
+                    <div class="pet_dropdown">
+                        <a href="{% url 'my_pets' user_id %}" class="pet_dropbtn">вет паспорт</a>
+                        <div class="pet_dropdown-content">
+                            {% if pet_ids %}
+                                {% for pet in pets %}
+                                    <a href="{% url 'pet_info' user_id=request.user.id pet_id=pet.id %}"><img src="{{  pet.avatar.url }}" alt="avatar"> {{ pet.name }}</a>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+
+{#        {% if pet_ids %}#}
+{#    <p>Количество элементов в массиве pet_ids: {{ pet_ids|length }}</p>#}
+{#{% endif %}#}
+{#<p>{{ pet_ids }}</p>#}
+            <a href="/about/" class="button">амбулаторная карта</a> {#Амбулаторная карта#}
         </div>
 
         {% if user.is_authenticated %}
+            <div class="notification">
+
+            </div>
+            
             <div class="dropdown-position">
                 <div class="dropdown">
                     <a href="{% url 'user_profile' user_id %}" class="dropbtn"><img src="{{ avatar_url }}" alt="avatar"></a>
                     <div class="dropdown-content">
-                        <a href="{% url 'user_profile' user_id %}">Личный кабинет</a>
-                        <a href="{% url 'pets' user_id %}">Мои питомцы</a>
-                        <a href="{% url 'event_list' user_id%}">Мой календарь</a>
-                        <a href="{% url 'logout' %}">Выйти</a>
+                        <a href="{% url 'user_profile' user_id %}">личный кабинет</a>
+                        <a href="{% url 'my_pets' user_id %}">мои питомцы</a>
+                        <a href="{% url 'event_list' user_id%}">мой календарь</a>
+                        <a href="{% url 'logout' %}">выйти</a>
                     </div>
                 </div>
             </div>

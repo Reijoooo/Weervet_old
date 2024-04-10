@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 
-def contact(request):
+def article(request):
 
     # Отправка данных в шаблон и возврат ответа
-    return render(request, 'contact.html')
+    return render(request, 'article.html')

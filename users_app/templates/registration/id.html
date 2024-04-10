@@ -9,6 +9,6 @@
         {% endif  %}
         <p>Username: {{ user.username }}</p>
         <p>Username: {{ user.id }}</p>
-        <a href="{% url 'user_settings' user_id%}" class="id">Настройки</a>
+        <a href="{% url 'user_settings' user_id%}" class="buttons">Настройки</a>
     </div>
 {% endblock %}

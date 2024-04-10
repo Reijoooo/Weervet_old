@@ -1,6 +1,6 @@
 /* Стилизация формы */
 form {
-    width: 300px;
+    width: 500px;
     margin: 0 auto;
     padding: 20px;
     /*border: 1px solid #ccc;*/
@@ -26,21 +26,4 @@ input[type="password"] {
     border: 1px solid #ccc;
     border-radius: 3px;
     box-sizing: border-box;
-}
-
-/* Стилизация кнопки отправки формы */
-button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    background-color: #4CAF50;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-/* Стилизация кнопки отправки формы при наведении */
-button[type="submit"]:hover {
-    background-color: #45a049;
 }

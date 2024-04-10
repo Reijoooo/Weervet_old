@@ -21,7 +21,7 @@ import home_page_app
 from home_page_app.views import index
 from users_app.views import register, user_logout, user_login, my_account, user_settings
 from about_app.views import about
-from contact_app.views import contact
+from article_app.views import article
 from my_pets_app.views import my_pets, add_pets, pet_info, pet_edit, pet_delete
 from schedule.views import event_list, event_detail, create_event, edit_event, delete_event, ajax_event_list
 from . import templates
@@ -47,12 +47,12 @@ urlpatterns = [
 
     # Информационные ссылки
     path('about/', about, name='about'),
-    path('contact/', contact, name='contact'),
+    path('article/', article, name='article'),
 
     # Мои животные
-    path('id/<int:user_id>/my_pets/', my_pets, name='pets'),
+    path('id/<int:user_id>/my_pets/', my_pets, name='my_pets'),
     path('id/<int:user_id>/my_pets/add_pets', add_pets, name='add_pets'),
-    path('id/<int:user_id>/pet/id/<int:pet_id>', pet_info, name='pet_info'),
+    path('id/<int:user_id>/pet_info/id/<int:pet_id>', pet_info, name='pet_info'),
     path('id/<int:user_id>/pet_edit/id/<int:pet_id>', pet_edit, name='pet_edit'),
     path('id/<int:user_id>/pet_delete/id/<int:pet_id>', pet_delete, name='pet_delete'),
 

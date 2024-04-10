@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'home_page_app',
     'users_app',
-    'contact_app',
+    'article_app',
     'about_app',
     'my_pets_app',
     'schedule',
@@ -81,6 +81,7 @@ TEMPLATES = [
 
                 'django.template.context_processors.request',
                 'users_app.context_processors.user_id',
+                'my_pets_app.context_processors.pet_id',
 
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
