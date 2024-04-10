@@ -3,14 +3,17 @@
 {% block title %}Мои животные{% endblock %}
 
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="css/pets.css">
     <p>Пользователь: {{ user.username }}</p>
 
     <ul>
         {% for pet in pets %}
             <li> <img src="{{  pet.avatar.url }}" alt="avatar" style="width: 50px; height: 50px"> - {{ pet.name }} -
-                {{ pet.species }} - <a href="{% url 'pet_info' user_id=user.id pet_id=pet.id %}" class="contact">Информация</a> -
-            <a href="{% url 'pet_edit' user_id=user.id pet_id=pet.id %}" class="contact">Редактировать</a> -
-            <a href="{% url 'pet_delete' user_id=user.id pet_id=pet.id %}" class="contact">Удалить питомца</a>
+                {{ pet.species }} - <a href="{% url 'pet_info' user_id=user.id pet_id=pet.id %}" class="buttons">Информация</a>
+            <a href="{% url 'pet_edit' user_id=user.id pet_id=pet.id %}" class="buttons">Вет-паспорт</a>
+                <a href="{% url 'pet_edit' user_id=user.id pet_id=pet.id %}" class="buttons">Мед-карта</a>
+                <a href="{% url 'pet_edit' user_id=user.id pet_id=pet.id %}" class="buttons">Редактировать</a>
+            <a href="{% url 'pet_delete' user_id=user.id pet_id=pet.id %}" class="buttons">Удалить питомца</a>
             </li>
 
         {% endfor %}
@@ -19,5 +22,5 @@
 
 
 
-    <a href="{% url 'add_pets' user_id %}" class="contact">Добавить питомца</a>
+    <a href="{% url 'add_pets' user_id %}" class="buttons">Добавить питомца</a>
 {% endblock %}

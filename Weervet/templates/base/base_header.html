@@ -7,7 +7,7 @@
 {#            <a href="/about/" class="button">вет паспорт</a> {#Вет паспорт#}
                 {% if user.is_authenticated %}
                     <div class="pet_dropdown">
-                        <a href="{% url 'my_pets' user_id %}" class="pet_dropbtn">вет паспорт</a>
+                        <a href="{% url 'my_pets' user_id %}" class="pet_dropbtn">мои питомцы</a>
                         <div class="pet_dropdown-content">
                             {% if pet_ids %}
                                 {% for pet in pets %}
@@ -23,7 +23,7 @@
 {#    <p>Количество элементов в массиве pet_ids: {{ pet_ids|length }}</p>#}
 {#{% endif %}#}
 {#<p>{{ pet_ids }}</p>#}
-            <a href="/about/" class="button">амбулаторная карта</a> {#Амбулаторная карта#}
+{#            <a href="/about/" class="button">амбулаторная карта</a> {#Амбулаторная карта#}
         </div>
 
         {% if user.is_authenticated %}
