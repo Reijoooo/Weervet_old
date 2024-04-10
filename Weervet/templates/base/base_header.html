@@ -1,13 +1,14 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
-<header>
     <nav>
         <a id = "logo" href="/"></a>
-        <a href="/contact/" class="contact">Контакты</a>
-        <a href="/about/" class="about">О нас</a>
+        <div class="header_buttons">
+            <a href="/contact/" class="button">Статьи</a>  {#Статьи#}
+            <a href="/about/" class="button">Вет паспорт</a> {#Вет паспорт#}
+            <a href="/about/" class="button">Амбулаторная карта</a> {#Амбулаторная карта#}
+        </div>
 
         {% if user.is_authenticated %}
-
             <div class="dropdown-position">
                 <div class="dropdown">
                     <a href="{% url 'user_profile' user_id %}" class="dropbtn"><img src="{{ avatar_url }}" alt="avatar"></a>
@@ -19,11 +20,9 @@
                     </div>
                 </div>
             </div>
-
         {% else %}
             <a href="/register/" class="register">Зарегистрироваться</a>
             <a href="/login/" class="login">Войти</a>
         {% endif %}
 
     </nav>
-</header>

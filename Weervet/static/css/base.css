@@ -1,83 +1,102 @@
 .header-container {
-    margin: auto;
-    border: 2px solid darkorange; /* Граница контейнера */
-    background-color: mediumseagreen;
-    border-radius: 20px;
-    padding: 30px; /* Отступы внутри контейнера */
+    left: -8px;
+    top: -8px;
+    width: 1920px;
+    height: 150px;
+    z-index: 1;
+    display: flex;
+    /*overflow: hidden;*/ /*Чтобы видеть выпадающее меню*/
+    position: relative;
+    box-sizing: content-box;
+    align-items: flex-start;
+    background: linear-gradient(180deg, rgba(74, 2, 254, 1) 0%, rgba(110, 20, 205, 1) 100%);
+    flex-shrink: 0;
 }
 
 .body-container {
-    width: 60%;
-    margin: auto;
-    border: 1px solid darkorange;
-    border-radius: 20px;
+    display: table;
+    min-height: 76%;
+
+
+    left: 0px;
+    width: 1920px;
+    flex-shrink: 1;
+    position: absolute;
+    overflow: hidden;
+    z-index: 0;
+}
+
+main {
+
+    position: relative;
+    display: table-row;
+    /* Чтобы ряд занимал всё оставшееся пространство, так как табличная разметка не позволит ему вытолкнуть header и footer */
+    height: 100%;
+    width: 1920px;
+    left: -8px;
+    z-index: 0;
+    overflow: hidden;
 }
 
 .footer-container {
-    margin: auto;
-    border: 2px solid darkorange; /* Граница контейнера */
-    background-color: mediumseagreen;
-    border-radius: 20px;
-    padding: 30px; /* Отступы внутри контейнера */
+    left: -8px;
+    width: 1920px;
+    height: 217px;
+    z-index: 2;
+    display: flex;
+    overflow: hidden;
+    position: absolute;
+    box-sizing: content-box;
+    align-items: flex-start;
+    background: linear-gradient(180deg, rgba(74, 2, 254, 1) 0%, rgba(110, 20, 205, 1) 100%);
+    flex-shrink: 0;
 }
 
 #logo {
-    background-image: url("weervet2.png");
-    margin-top: -30px;
+    width: 193px;
+    height: 160px;
+    display: flex;
+    align-items: flex-start;
+    flex-shrink: 1;
     position: absolute;
-    width: 100px;
-    height: 100px;
+    top: -5px;
+    left: 176px;
+    background-image: url("header_logo.png");;
 }
 
-.contact {
-    margin-left: 150px;
+.button {
+    margin-left: 42px;
+    top: 19px;
+    color: rgba(255, 255, 255, 1);
+    width: 244px;
+    height: auto;
+    position: relative;
+    font-size: 36px;
+
+    text-align: center;
+    /*font-family: Vela Sans;*/
+    font-weight: 500;
+    line-height: normal;
+    font-stretch: normal;
     text-decoration: none;
-    font-size:30px;
-    font-family: Impact, Charcoal, sans-serif;
-    width:148px;
-    height:50px;
-    border-width:1px;
-    color:#fff;
-    border-color:#18ab29;
-    border-top-left-radius:40px;
-    border-top-right-radius:40px;
-    border-bottom-left-radius:40px;
-    border-bottom-right-radius:40px;
-    background: darkorange;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+
+    background-image: url("button_background.png");
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 40px;
+    background-position-y: -10px;
 }
 
-.contact:hover {
-    background: orange;
+.button:hover {
+    background: rgba(86, 15, 167, 1);
 }
 
-.about {
-    margin-left: 20px;
-    text-decoration: none;
-    font-size:30px;
-    font-family: Impact, Charcoal, sans-serif;
-    width:150px;
-    height:50px;
-    border-width:1px;
-    color:#fff;
-    border-color:#18ab29;
-    border-top-left-radius:40px;
-    border-top-right-radius:40px;
-    border-bottom-left-radius:40px;
-    border-bottom-right-radius:40px;
-    background: darkorange;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+.header_buttons {
+    margin-left: 397px;
+    margin-top: 39px;
 }
-
-.about:hover {
-    background: orange;
-}
-
-
 
 .register {
     margin-left: 20px;
@@ -152,56 +171,115 @@
 }
 
 .dropdown-position {
-    margin-left: 95%;
-    margin-top: -35px;
+    width: 141px;
+    height: 300px;
+    display: block;
+    /*display: flex;*/
+    /*align-items: flex-start;*/
+    flex-shrink: 0;
+    /*border-radius: 87px;*/
+    position: absolute;
+    top: 3px;
+    left: 1630px;
+    /*overflow: hidden;*/
+
 }
 
 .dropbtn img {
+    /*width: 141px;*/
+    /*height: 141px;*/
+    /*display: flex;*/
+    /*align-items: flex-start;*/
+    /*flex-shrink: 0;*/
+    /*border-radius: 87px;*/
+    /*position: absolute;*/
+    /*top: 3px;*/
+    /*left: 1630px;*/
+    /*!*box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25) ;*!*/
+    /*overflow: hidden;*/
 
-    width: 50px;
-    height: 50px;
+    position: absolute;
+    width: 141px;
+    height: 141px;
     border-radius: 50%;
 }
 
 /* Стили для основной кнопки меню */
 .dropbtn {
-
-    border-radius: 100%;
-
+    /*border-radius: 100%;*/
     color: white;
     border: none;
 }
 
 /* Стили для контейнера выпадающего меню */
 .dropdown {
-  position: relative;
-  display: inline-block;
+
+    /*display: flex;*/
+    /*align-items: flex-start;*/
+    /*flex-shrink: 0;*/
+    /*border-radius: 10%;*/
+    z-index: 3;
+
+    position: relative;
+
+    /*display: inline-block;*/
 }
 
 /* Стили для содержимого выпадающего меню (по умолчанию скрыто) */
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+    position: absolute;
+    /*align-items: flex-start;*/
+    /*flex-shrink: 0;*/
+    top: 135px;
+    display: none;
+
+    /*height: auto;*/
+    font-size: 25px;
+    text-align: center;
+
+
+
+    /*border-radius: 10%;*/
+
+    /*color: rgba(255, 255, 255, 1);*/
+    background-image: url("button_background.png");
+    background-position-y: -20px;
+    border-radius: 40px;
+    /*min-width: 160px;*/
+    /*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+    /*z-index: 1;*/
 }
 
 /* Стили для ссылок в выпадающем меню */
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+    text-align-all: center;
+    white-space: nowrap;
+    height: auto;
+    position: relative;
+    text-align: center;
+    /*font-family: Vela Sans;*/
+    font-weight: 500;
+    line-height: normal;
+    font-stretch: normal;
+    color: rgba(255, 255, 255, 1);
+    border-radius: 40px;
+    background-image: url("button_background.png");
+    background-position-y: -20px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    /*border-radius: 10%;*/
 }
 
 /* Стили для ссылок в выпадающем меню */
 .dropdown-content a:hover {
-  background-color: #18ab29;
+    position: relative;
+    background: rgba(86, 15, 167, 1);
+    /*border-radius: 10%;*/
 }
 
 /* Показываем выпадающее меню, когда наводим курсор на основную кнопку */
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
+    /*border-radius: 10%;*/
 }
